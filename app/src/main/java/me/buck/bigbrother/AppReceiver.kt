@@ -5,10 +5,9 @@ import android.content.Intent
 import org.threeten.bp.LocalDateTime
 import timber.log.Timber
 
-class AppReceiver : SimpleReceiver {
+class AppReceiver(context: Context) : SimpleReceiver(context, false) {
 
-    constructor(context: Context)
-            : super(context, false) {
+    init {
         mFilter.addAction(Actions.SCREEN_OFF)
         mFilter.addAction(Actions.USER_PRESENT)
     }
