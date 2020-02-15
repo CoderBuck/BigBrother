@@ -13,21 +13,27 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             Thread {
-                val infos = getLockInfos()
+                val info = getLockInfo()
+                val lockCount = getLockCount()
                 runOnUiThread {
-                    text.text = infos
+                    text.text = info
+                    lock_count.text = "解锁次数：$lockCount"
                 }
             }.start()
         }
     }
 
-    fun getLockInfos(): String {
+    fun getLockInfo(): String {
         val box = ObjectBox.screenLockInfoBox()
-        val text = box.all
-            .map { info ->
-                info.time + "  " + info.emLock.name
-            }
-            .joinToString(separator = "\n")
-        return text
+        return box.all.joinToString(separator = "\n") { info ->
+            info.time + "  " + info.emLock.name
+        }
+    }
+
+    fun getLockCount(): Long {
+        return ObjectBox.screenLockInfoBox().query()
+            .contains(ScreenLockInfo_.emLock, EmLock.unlock.name)
+            .build().count()
     }
 }
+

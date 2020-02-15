@@ -21,21 +21,13 @@ class AppReceiver : SimpleReceiver {
             Actions.SCREEN_OFF -> {
                 val info = ScreenLockInfo(0, LocalDateTime.now().toString(), EmLock.lock)
                 val box = ObjectBox.screenLockInfoBox()
-                val list = box.query().build().find()
-                val last = list.last()
-                if (last.emLock == EmLock.unlock) {
-                    box.put(info)
-                }
+                box.put(info)
             }
 
             Actions.USER_PRESENT -> {
                 val info = ScreenLockInfo(0, LocalDateTime.now().toString(), EmLock.unlock)
                 val box = ObjectBox.screenLockInfoBox()
-                val list = box.query().build().find()
-                val last = list.last()
-                if (last.emLock == EmLock.lock) {
-                    box.put(info)
-                }
+                box.put(info)
             }
         }
     }
