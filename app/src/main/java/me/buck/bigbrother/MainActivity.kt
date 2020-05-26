@@ -1,8 +1,10 @@
 package me.buck.bigbrother
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import me.buck.bigbrother.test.TestActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,15 +13,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Starter.monitorService(this)
 
+
         button.setOnClickListener {
-            Thread {
-                val info = getLockInfo()
-                val lockCount = getLockCount()
-                runOnUiThread {
-                    text.text = info
-                    lock_count.text = "解锁次数：$lockCount"
-                }
-            }.start()
+//            Thread {
+//                val info = getLockInfo()
+//                val lockCount = getLockCount()
+//                runOnUiThread {
+//                    text.text = info
+//                    lock_count.text = "解锁次数：$lockCount"
+//                }
+//            }.start()
+
+            startActivity(Intent(this,TestActivity::class.java))
         }
     }
 
