@@ -1,18 +1,15 @@
 package me.buck.bigbrother.test
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.pm.PermissionInfoCompat
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import io.github.coderbuck.boring.util.contentView
+import me.buck.bigbrother.util.contentView
 import me.buck.bigbrother.R
 import me.buck.bigbrother.databinding.ActivityTestBinding
 import timber.log.Timber
-import java.util.jar.Manifest
 
 class TestActivity : AppCompatActivity() {
 

@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Starter.monitorService(this)
 
-
         button.setOnClickListener {
 //            Thread {
 //                val info = getLockInfo()

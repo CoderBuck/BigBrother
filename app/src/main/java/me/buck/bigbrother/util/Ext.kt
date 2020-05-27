@@ -1,4 +1,4 @@
-package io.github.coderbuck.boring.util
+package me.buck.bigbrother.util
 
 import android.view.LayoutInflater
 import android.view.View
