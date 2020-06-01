@@ -1,9 +1,10 @@
-package me.buck.bigbrother
+package me.buck.bigbrother.service
 
 import android.accessibilityservice.AccessibilityService
-import android.app.Service
 import android.content.Intent
 import android.view.accessibility.AccessibilityEvent
+import me.buck.bigbrother.app.AppModel
+import me.buck.bigbrother.ui.PopManager
 import timber.log.Timber
 
 /**
@@ -16,17 +17,29 @@ class MyAccessibilityService : AccessibilityService() {
         logMethod("onCreate")
     }
 
-//    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-//        super.onStartCommand(intent, flags, startId)
-//        return Service.START_STICKY
-//    }
-
     override fun onInterrupt() {
         logMethod("onInterrupt")
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        logMethod("onAccessibilityEvent")
+        Timber.d("onAccessibilityEvent event = %s", event.toString())
+        Timber.d("onAccessibilityEvent event source = %s", event?.source?.toString())
+        if (event == null) return
+
+        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            val pkg = event.packageName ?: ""
+            val clazz = event.className ?: ""
+
+
+            Timber.d("onAccessibilityEvent pkg = %s, clazz = %s", pkg, clazz)
+
+            if (PopManager.isTopActivityPopShowing()) {
+                PopManager.topActivityPop!!.view.setPkg(pkg.toString())
+                PopManager.topActivityPop!!.view.setClazz(clazz.toString())
+            }
+
+
+        }
 
     }
 

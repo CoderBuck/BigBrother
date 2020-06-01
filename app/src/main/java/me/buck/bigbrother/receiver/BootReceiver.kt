@@ -1,8 +1,10 @@
-package me.buck.bigbrother
+package me.buck.bigbrother.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import me.buck.bigbrother.Actions
+import me.buck.bigbrother.Starter
 
 class BootReceiver : BroadcastReceiver() {
 

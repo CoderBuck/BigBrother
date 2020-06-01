@@ -2,12 +2,14 @@ package me.buck.bigbrother
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import me.buck.bigbrother.adapter.DevToolAdapter
 import me.buck.bigbrother.databinding.ActivityMainBinding
-import me.buck.bigbrother.util.AccessibilityUtils
 import me.buck.bigbrother.util.contentView
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
+
+    val adapter = DevToolAdapter()
 
     private lateinit var bind: ActivityMainBinding
 
@@ -16,11 +18,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bind = ActivityMainBinding.bind(contentView)
 
-        bind.fgRoot.setOnClickListener {
-            //            AccessibilityUtils.jumpSetting(this)
-            val enable = AccessibilityUtils.checkEnable(this, MyAccessibilityService::class.java)
-            Timber.d("enable = %s", enable)
-        }
+        bind.rv.layoutManager = GridLayoutManager(this, 4)
+        bind.rv.adapter = adapter
+
+        adapter.items.add("当前Activity")
+        adapter.notifyDataSetChanged()
+
     }
 }
 

@@ -1,4 +1,4 @@
-package me.buck.bigbrother
+package me.buck.bigbrother.receiver.base
 
 import android.content.BroadcastReceiver
 import android.content.Context

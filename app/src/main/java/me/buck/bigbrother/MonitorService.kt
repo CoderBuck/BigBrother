@@ -3,6 +3,7 @@ package me.buck.bigbrother
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import me.buck.bigbrother.receiver.AppReceiver
 import me.buck.receiver.AutoReceiver
 
 class MonitorService : Service() {
