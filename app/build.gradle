@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlin-kapt' // Required for annotation processing.
-apply plugin: 'io.objectbox' // Apply last.
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.objectbox'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "me.buck.bigbrother"
         minSdkVersion 21
@@ -43,17 +43,18 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime:2.2.0"
+    implementation "androidx.fragment:fragment-ktx:1.2.4"
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.blankj:utilcodex:1.28.5'
-    implementation 'me.buck:auto-receiver:0.2.0'
-    annotationProcessor 'me.buck:auto-receiver-compiler:0.2.0'
+    implementation 'me.buck:auto-receiver:0.2.3'
+    kapt 'me.buck:auto-receiver-compiler:0.2.3'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

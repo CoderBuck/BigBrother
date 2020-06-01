@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">BigBrother</string>
-    <string name="accessibility_service_description">老大哥会监视你的手机，一切都是为了你好。老大哥无处不在，老大哥万岁！</string>
+    <string name="accessibility_service_description">Big brother is watching u！</string>
     <string name="accessibility_service_label">老大哥在看着你</string>
 </resources>

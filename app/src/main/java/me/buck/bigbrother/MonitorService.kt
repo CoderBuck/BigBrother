@@ -3,10 +3,11 @@ package me.buck.bigbrother
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import me.buck.receiver.AutoReceiver
 
 class MonitorService : Service() {
 
-    lateinit var appReceiver: AppReceiver
+    private val appReceiver = AppReceiver()
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
@@ -14,15 +15,13 @@ class MonitorService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        appReceiver = AppReceiver(this)
-        appReceiver.register()
+        AutoReceiver.bind(this, appReceiver)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        appReceiver.unregister()
+        AutoReceiver.unbind(appReceiver)
     }
-
 
 
 }
